@@ -6,8 +6,8 @@ folder_path = {
 }
 
 file_path = {
-    "train_xlsx" : "model_d/Train_model_d.xlsx",
-    "test_xlsx" : "model_d/Test_model_d.xlsx"
+    "train_xlsx" : "model_d_infer/Train_model_d.xlsx",
+    "test_xlsx" : "model_d_infer/Test_model_d.xlsx"
 }
 
 hyperparameter_train = {
@@ -19,6 +19,6 @@ hyperparameter_train = {
 }
 
 model_ckpts = {
-    "saved_model" : "model_d/agp_birads_model_d.ckpt",
-    "model_output" : "model_d/output"
+    "saved_model" : "model_d_infer/agp_birads_model_d.ckpt",
+    "model_output" : "model_d_infer/output"
 }
