@@ -1151,3 +1151,23 @@ BI-RADS prediction:
 	BI-RADS 0:	1.0
 	BI-RADS 1:	2.219273e-16
 	BI-RADS 2:	1.9001367e-15
+2018-12-10 06:55:11.595065: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2018-12-10 06:55:11.617055: I tensorflow/core/common_runtime/gpu/gpu_device.cc:982] Device interconnect StreamExecutor with strength 1 edge matrix:
+2018-12-10 06:55:11.617083: I tensorflow/core/common_runtime/gpu/gpu_device.cc:988]      
+2018-12-10 06:55:11.684666: I tensorflow/core/common_runtime/gpu/gpu_device.cc:982] Device interconnect StreamExecutor with strength 1 edge matrix:
+2018-12-10 06:55:11.684693: I tensorflow/core/common_runtime/gpu/gpu_device.cc:988]      
+Traceback (most recent call last):
+  File "model_d_infer/birads_prediction.py", line 108, in <module>
+Tensor("fully_connected_1/Softmax:0", shape=(1, 3), dtype=float32, device=/device:CPU:*)
+    inference(parameters_)
+  File "model_d_infer/birads_prediction.py", line 49, in inference
+    saver.restore(session, config.model_ckpts["saved_model"] )
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/python/training/saver.py", line 1536, in restore
+    if not checkpoint_management.checkpoint_exists(compat.as_text(save_path)):
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/python/training/checkpoint_management.py", line 364, in checkpoint_exists
+    if file_io.get_matching_files(pathname):
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/python/lib/io/file_io.py", line 344, in get_matching_files
+    compat.as_bytes(single_filename), status)
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/python/framework/errors_impl.py", line 528, in __exit__
+    c_api.TF_GetCode(self.status.status))
+tensorflow.python.framework.errors_impl.NotFoundError: model_d; No such file or directory
