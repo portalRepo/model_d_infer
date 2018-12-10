@@ -1151,3 +1151,66 @@ BI-RADS prediction:
 	BI-RADS 0:	1.0
 	BI-RADS 1:	2.219273e-16
 	BI-RADS 2:	1.9001367e-15
+2018-12-10 07:13:32.422100: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2018-12-10 07:13:33.101217: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:964] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2018-12-10 07:13:33.101539: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1432] Found device 0 with properties: 
+name: Tesla M60 major: 5 minor: 2 memoryClockRate(GHz): 1.1775
+pciBusID: 0000:00:1e.0
+totalMemory: 7.44GiB freeMemory: 7.36GiB
+2018-12-10 07:13:33.101568: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1511] Adding visible gpu devices: 0
+2018-12-10 07:13:33.433595: I tensorflow/core/common_runtime/gpu/gpu_device.cc:982] Device interconnect StreamExecutor with strength 1 edge matrix:
+2018-12-10 07:13:33.433649: I tensorflow/core/common_runtime/gpu/gpu_device.cc:988]      0 
+2018-12-10 07:13:33.433658: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1001] 0:   N 
+2018-12-10 07:13:33.433874: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1115] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 7095 MB memory) -> physical GPU (device: 0, name: Tesla M60, pci bus id: 0000:00:1e.0, compute capability: 5.2)
+2018-12-10 07:13:33.506385: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1511] Adding visible gpu devices: 0
+2018-12-10 07:13:33.506420: I tensorflow/core/common_runtime/gpu/gpu_device.cc:982] Device interconnect StreamExecutor with strength 1 edge matrix:
+2018-12-10 07:13:33.506430: I tensorflow/core/common_runtime/gpu/gpu_device.cc:988]      0 
+2018-12-10 07:13:33.506437: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1001] 0:   N 
+2018-12-10 07:13:33.506608: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1115] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 7095 MB memory) -> physical GPU (device: 0, name: Tesla M60, pci bus id: 0000:00:1e.0, compute capability: 5.2)
+2018-12-10 07:13:33.611890: W tensorflow/core/framework/op_kernel.cc:1273] OP_REQUIRES failed at save_restore_v2_ops.cc:184 : Not found: model_d_infer/agp_birads_model_d.ckpt.data-00000-of-00001; No such file or directory
+Traceback (most recent call last):
+  File "model_d_infer/birads_prediction.py", line 108, in <module>
+Tensor("fully_connected_1/Softmax:0", shape=(1, 3), dtype=float32, device=/device:CPU:*)
+    inference(parameters_)
+  File "model_d_infer/birads_prediction.py", line 49, in inference
+    saver.restore(session, config.model_ckpts["saved_model"] )
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/python/training/saver.py", line 1562, in restore
+    err, "a Variable name or other graph key that is missing")
+tensorflow.python.framework.errors_impl.NotFoundError: Restoring from checkpoint failed. This is most likely due to a Variable name or other graph key that is missing from the checkpoint. Please ensure that you have not altered the graph expected based on the checkpoint. Original error:
+
+model_d_infer/agp_birads_model_d.ckpt.data-00000-of-00001; No such file or directory
+	 [[node save/RestoreV2 (defined at model_d_infer/birads_prediction.py:48)  = RestoreV2[dtypes=[DT_FLOAT, DT_FLOAT, DT_FLOAT, DT_FLOAT, DT_FLOAT, ..., DT_FLOAT, DT_FLOAT, DT_FLOAT, DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](_arg_save/Const_0_0, save/RestoreV2/tensor_names, save/RestoreV2/shape_and_slices)]]
+
+Caused by op u'save/RestoreV2', defined at:
+  File "model_d_infer/birads_prediction.py", line 108, in <module>
+    inference(parameters_)
+  File "model_d_infer/birads_prediction.py", line 48, in inference
+    saver = tf.train.Saver(max_to_keep=None)
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/python/training/saver.py", line 1102, in __init__
+    self.build()
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/python/training/saver.py", line 1114, in build
+    self._build(self._filename, build_save=True, build_restore=True)
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/python/training/saver.py", line 1151, in _build
+    build_save=build_save, build_restore=build_restore)
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/python/training/saver.py", line 795, in _build_internal
+    restore_sequentially, reshape)
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/python/training/saver.py", line 406, in _AddRestoreOps
+    restore_sequentially)
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/python/training/saver.py", line 862, in bulk_restore
+    return io_ops.restore_v2(filename_tensor, names, slices, dtypes)
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/python/ops/gen_io_ops.py", line 1466, in restore_v2
+    shape_and_slices=shape_and_slices, dtypes=dtypes, name=name)
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/python/framework/op_def_library.py", line 787, in _apply_op_helper
+    op_def=op_def)
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/python/util/deprecation.py", line 488, in new_func
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/python/framework/ops.py", line 3274, in create_op
+    op_def=op_def)
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/python/framework/ops.py", line 1770, in __init__
+    self._traceback = tf_stack.extract_stack()
+
+NotFoundError (see above for traceback): Restoring from checkpoint failed. This is most likely due to a Variable name or other graph key that is missing from the checkpoint. Please ensure that you have not altered the graph expected based on the checkpoint. Original error:
+
+model_d_infer/agp_birads_model_d.ckpt.data-00000-of-00001; No such file or directory
+	 [[node save/RestoreV2 (defined at model_d_infer/birads_prediction.py:48)  = RestoreV2[dtypes=[DT_FLOAT, DT_FLOAT, DT_FLOAT, DT_FLOAT, DT_FLOAT, ..., DT_FLOAT, DT_FLOAT, DT_FLOAT, DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](_arg_save/Const_0_0, save/RestoreV2/tensor_names, save/RestoreV2/shape_and_slices)]]
+
