@@ -1,0 +1,2 @@
+model_checkpoint_path: "agp_birads_model_d.ckpt"
+all_model_checkpoint_paths: "agp_birads_model_d.ckpt"
