@@ -91,7 +91,7 @@ if __name__ == "__main__":
 
     parser = argparse.ArgumentParser(description='Run Inference')
     parser.add_argument('--model-path', default= config.model_ckpts["saved_model"])
-    parser.add_argument('--device-type', default="cpu")
+    parser.add_argument('--device-type', default="gpu")
     parser.add_argument('--gpu-number', default=0, type=int)
     parser.add_argument('--image-path', default=config.folder_path["inference_image"])
     args = parser.parse_args()
