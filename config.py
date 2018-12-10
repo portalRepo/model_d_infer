@@ -2,7 +2,7 @@
 folder_path = {
     "train_dataset" : "dataset/Total_Train_dataset/",
     "test_dataset" : "dataset/Total_Test_dataset/",
-    "inference_image" : "model_d/images/"
+    "inference_image" : "model_d_infer/images/"
 }
 
 file_path = {
